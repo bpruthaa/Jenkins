@@ -1,0 +1,35 @@
+pipeline {
+    agent any  // This defines where the pipeline will run, here it runs on any available agent.
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh 'echo "Build successful!"'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                sh 'echo "Tests passed!"'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                sh 'echo "Deployment successful!"'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
